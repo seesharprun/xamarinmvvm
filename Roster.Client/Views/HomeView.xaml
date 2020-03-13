@@ -6,6 +6,18 @@
              mc:Ignorable="d"
              x:Class="Roster.Client.Views.HomeView">
     <StackLayout>
-        <Label Text="APP" FontSize="Header" HorizontalTextAlignment="Center" VerticalOptions="Start" />
+        <Label Text="{Binding Title}" FontSize="Header" HorizontalTextAlignment="Center" VerticalOptions="Start" />
+        <StackLayout Orientation="Horizontal">
+            <Entry Keyboard="Text" Placeholder="First Name" Text="{Binding FirstName}" HorizontalOptions="FillAndExpand" />
+            <Entry Keyboard="Text" Placeholder="Last Name" Text="{Binding LastName}" HorizontalOptions="FillAndExpand" />
+            <Button Text="Add Person" Command="{Binding AddPersonCommand}" HorizontalOptions="End" />
+        </StackLayout>
+        <ListView ItemsSource="{Binding Attendees}" VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Company}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 </ContentPage>
